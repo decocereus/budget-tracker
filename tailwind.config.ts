@@ -1,11 +1,13 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
-  darkMode: ["selector", '[data-theme="dark"]'],
+  darkMode: ["class", '[data-theme^="dark-"]'],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./module/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -53,7 +55,11 @@ export default {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
+        full: "9999px",
+        "3xl": "calc(var(--radius) + 6)",
+        "2xl": "calc(var(--radius) + 4)",
+        xl: "calc(var(--radius) + 2)",
+        lg: "calc(var(--radius))",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
@@ -65,6 +71,11 @@ export default {
         lg: "1024px",
         xl: "1280px",
         "2xl": "1536px",
+      },
+      fontFamily: {
+        sans: ["var(--font-jetbrains-mono)", ...fontFamily.sans],
+        mono: ["var(--font-jetbrains-mono)", ...fontFamily.mono],
+        poppins: ["var(--font-poppins)", ...fontFamily.sans],
       },
     },
   },

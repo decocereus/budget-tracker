@@ -13,6 +13,6 @@ const NextThemesProvider = dynamic(
 export default function ThemeProvider({
   children,
   ...props
-}: React.ComponentProps<typeof NextThemesProvider>) {
+}: Readonly<React.ComponentProps<typeof NextThemesProvider>>) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }

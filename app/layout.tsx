@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono, Poppins } from "next/font/google";
 import "@/styles/globals.css";
-import ThemeProvider from "@/providers/ThemeProvider";
+import { cn } from "@/lib/utils";
+import ClientThemeProvider from "@/providers/client-theme-wrapper";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -26,16 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(jetBrainsMono.variable, poppins.variable, "antialiased")}
       >
-        <ThemeProvider
-          attribute="data-theme"
-          storageKey="theme"
-          defaultTheme="system"
-          enableSystem
-        >
-          {children}
-        </ThemeProvider>
+        <ClientThemeProvider>{children}</ClientThemeProvider>
       </body>
     </html>
   );

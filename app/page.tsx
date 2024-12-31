@@ -1,17 +1,10 @@
 import LayoutWrapper from "@/components/layout-wrapper";
-import Shimmer from "@/components/ui/shimmer/shimmer";
-import dynamic from "next/dynamic";
-const ThemeToggle = dynamic(
-  () => import("@/components/theme-toggle/theme-toggle"),
-  {
-    loading: () => <Shimmer />,
-  }
-);
+import Label from "@/components/ui/label/label";
 
 export default function Home() {
   return (
-    <LayoutWrapper>
-      <ThemeToggle />
+    <LayoutWrapper className="flex items-center flex-col gap-y-6">
+      <Label>Hello, World</Label>
     </LayoutWrapper>
   );
 }
