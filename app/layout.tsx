@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
-import ClientThemeProvider from "@/providers/client-theme-wrapper";
+import { Toaster } from "@/components/ui/sonner";
+import BaseProvider from "@/providers/BaseProvider";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -30,7 +31,10 @@ export default function RootLayout({
       <body
         className={cn(jetBrainsMono.variable, poppins.variable, "antialiased")}
       >
-        <ClientThemeProvider>{children}</ClientThemeProvider>
+        <BaseProvider>
+          {children}
+          <Toaster />
+        </BaseProvider>
       </body>
     </html>
   );
